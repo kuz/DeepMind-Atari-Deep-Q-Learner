@@ -1,0 +1,31 @@
+
+LIMITED LICENSE:
+
+Copyright (c) 2014 Google Inc.
+Limited License: Under no circumstance is commercial use, reproduction, or
+distribution permitted. Use, reproduction, and distribution are permitted
+solely for academic use in evaluating and reviewing claims made in
+"Human-level control through deep reinforcement learning", Nature 518, 529–533
+(26 February 2015) doi:10.1038/nature14236, provided that the following
+conditions are met:
+
+* Any reproduction or distribution of source code must retain the above
+copyright notice and the full text of this license including the following
+disclaimer. 
+
+* Any reproduction or distribution in binary form must reproduce the above
+copyright notice and the full text of this license including the following
+disclaimer  in the documentation and/or other materials provided with the
+distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY 
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
