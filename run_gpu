@@ -43,4 +43,4 @@ args="-framework $FRAMEWORK -game_path $game_path -name $agent_name -env $ENV -e
 echo $args
 
 cd dqn
-../torch/bin/luajit train_agent.lua $args
+qlua train_agent.lua $args
