@@ -115,6 +115,16 @@ $PREFIX/bin/luarocks make
 RET=$?; if [ $RET -ne 0 ]; then echo "Error. Exiting."; exit $RET; fi
 echo "Alewrap installation completed"
 
+echo "Installing Lua-GD ... "
+cd $PREFIX/src
+rm -rf lua-gd
+git clone https://github.com/ittner/lua-gd.git
+cd lua-gd
+sed -i "s/LUABIN=lua5.1/LUABIN=..\/..\/bin\/luajit/" Makefile
+$PREFIX/bin/luarocks make
+RET=$?; if [ $RET -ne 0 ]; then echo "Error. Exiting."; exit $RET; fi
+echo "Lua-GD installation completed"
+
 echo
 echo "You can run experiments by executing: "
 echo
