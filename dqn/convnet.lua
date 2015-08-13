@@ -14,11 +14,6 @@ function create_network(args)
     --- first convolutional layer
     local convLayer = nn.SpatialConvolution
 
-    if args.gpu >= 0 then
-        net:add(nn.Transpose({1,2},{2,3},{3,4}))
-        convLayer = nn.SpatialConvolutionCUDA
-    end
-
     net:add(convLayer(args.hist_len*args.ncols, args.n_units[1],
                         args.filter_size[1], args.filter_size[1],
                         args.filter_stride[1], args.filter_stride[1],1))
@@ -35,7 +30,6 @@ function create_network(args)
 
     local nel
     if args.gpu >= 0 then
-        net:add(nn.Transpose({4,3},{3,2},{2,1}))
         nel = net:cuda():forward(torch.zeros(1,unpack(args.input_dims))
                 :cuda()):nElement()
     else
