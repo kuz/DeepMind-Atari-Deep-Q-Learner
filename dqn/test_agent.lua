@@ -1,8 +1,9 @@
 --[[
 Copyright (c) 2014 Google Inc.
-
 See LICENSE file for full terms of limited license.
 ]]
+
+gd = require "gd"
 
 if not dqn then
     require "initenv"
@@ -29,21 +30,13 @@ cmd:option('-network', '', 'reload pretrained network')
 cmd:option('-agent', '', 'name of agent file to use')
 cmd:option('-agent_params', '', 'string of agent parameters')
 cmd:option('-seed', 1, 'fixed input seed for repeatable experiments')
-cmd:option('-saveNetworkParams', false,
-           'saves the agent network in a separate file')
-cmd:option('-prog_freq', 5*10^3, 'frequency of progress output')
-cmd:option('-save_freq', 5*10^4, 'the model is saved every save_freq steps')
-cmd:option('-eval_freq', 10^4, 'frequency of greedy evaluation')
-cmd:option('-save_versions', 0, '')
-
-cmd:option('-steps', 10^5, 'number of training steps to perform')
-cmd:option('-eval_steps', 10^5, 'number of evaluation steps')
 
 cmd:option('-verbose', 2,
            'the higher the level, the more information is printed to screen')
 cmd:option('-threads', 1, 'number of BLAS threads')
 cmd:option('-gpu', -1, 'gpu flag')
-cmd:option('-ep', 0.0, 'exploration probability')
+cmd:option('-gif_file', '', 'GIF path to write session screens')
+cmd:option('-csv_file', '', 'CSV path to write session data')
 
 cmd:text()
 
@@ -59,24 +52,60 @@ local print = function(...)
     io.flush()
 end
 
-local step = 0
+-- file names from command line
+local gif_filename = opt.gif_file
 
-local screen, reward, terminal = game_env:getState()
+-- start a new game
+local screen, reward, terminal = game_env:newGame()
 
-print("Running...")
-local win = nil
-while step < opt.steps do
-    step = step + 1
-    local action_index = agent:perceive(reward, screen, terminal, true, opt.ep)
+-- compress screen to JPEG with 100% quality
+local jpg = image.compressJPG(screen:squeeze(), 100)
+-- create gd image from JPEG string
+local im = gd.createFromJpegStr(jpg:storage():string())
+-- convert truecolor to palette
+im:trueColorToPalette(false, 256)
 
-    -- game over? get next game!
-    if not terminal then
-        screen, reward, terminal = game_env:step(game_actions[action_index], true)
-    else
-        screen, reward, terminal = game_env:newGame()
-    end
+-- write GIF header, use global palette and infinite looping
+im:gifAnimBegin(gif_filename, true, 0)
+-- write first frame
+im:gifAnimAdd(gif_filename, false, 0, 0, 7, gd.DISPOSAL_NONE)
+
+-- remember the image and show it first
+local previm = im
+local win = image.display({image=screen})
+
+print("Started playing...")
+
+-- play one episode (game)
+while not terminal do
+    -- if action was chosen randomly, Q-value is 0
+    agent.bestq = 0
+    
+    -- choose the best action
+    local action_index = agent:perceive(reward, screen, terminal, true, 0.05)
+
+    -- play game in test mode (episodes don't end when losing a life)
+    screen, reward, terminal = game_env:step(game_actions[action_index], false)
 
     -- display screen
-    win = image.display({image=screen, win=win})
+    image.display({image=screen, win=win})
+
+    -- create gd image from tensor
+    jpg = image.compressJPG(screen:squeeze(), 100)
+    im = gd.createFromJpegStr(jpg:storage():string())
+    
+    -- use palette from previous (first) image
+    im:trueColorToPalette(false, 256)
+    im:paletteCopy(previm)
+
+    -- write new GIF frame, no local palette, starting from left-top, 7ms delay
+    im:gifAnimAdd(gif_filename, false, 0, 0, 7, gd.DISPOSAL_NONE)
+    -- remember previous screen for optimal compression
+    previm = im
 
 end
+
+-- end GIF animation and close CSV file
+gd.gifAnimEnd(gif_filename)
+
+print("Finished playing, close window to exit!")
