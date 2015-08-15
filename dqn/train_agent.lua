@@ -123,6 +123,9 @@ while step < opt.steps do
             -- Play game in test mode (episodes don't end when losing a life)
             screen, reward, terminal = game_env:step(game_actions[action_index])
 
+            -- display screen
+            win = image.display({image=screen, win=win})
+
             if estep%1000 == 0 then collectgarbage() end
 
             -- record every reward

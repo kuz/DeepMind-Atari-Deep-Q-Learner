@@ -76,6 +76,17 @@ specified GPU by setting the environment variable GPU_ID, e.g. by
 
 If GPU_ID is not specified, the first available GPU (ID 0) will be used by default.
 
+Storing a .gif for a trained network
+------------------------------------
+
+Once you have a snapshot of a network you can run
+
+	./test_gpu <game name> <snapshopt filename>
+
+to make it play one game and store the .gif under `gifs`. For example
+
+	./test_gpu breakout DQN3_0_1_breakout_FULL_Y.t7
+
 Options
 -------
 
