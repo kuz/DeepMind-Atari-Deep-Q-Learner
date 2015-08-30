@@ -56,7 +56,7 @@ $(PREFIX)/lib/libxitari.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
 	rm -rf xitari &&\
 	git clone https://github.com/deepmind/xitari.git &&\
 	cd xitari &&\
-	$(PREFIX)/bin/luarocks make &&\
+	$(PREFIX)/bin/luarocks make
 	@echo "Xitari installation completed"
 
 $(PREFIX)/lib/lua/5.1/libalewrap.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
@@ -65,7 +65,7 @@ $(PREFIX)/lib/lua/5.1/libalewrap.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
 	rm -rf alewrap &&\
 	git clone https://github.com/deepmind/alewrap.git &&\
 	cd alewrap &&\
-	$(PREFIX)/bin/luarocks make &&\
+	$(PREFIX)/bin/luarocks make
 	@echo "Alewrap installation completed"
 
 $(PREFIX)/lib/luarocks/rocks/luagd/.installed: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
@@ -77,7 +77,7 @@ $(PREFIX)/lib/luarocks/rocks/luagd/.installed: $(PREFIX)/bin/luarocks $(LUAROCKS
 	cd lua-gd &&\
 	sed -i "s/LUABIN=lua5.1/LUABIN=..\/..\/bin\/luajit/" Makefile &&\
 	$(PREFIX)/bin/luarocks make &&\
-	touch $@ &&\
+	touch $@
 	@echo "Lua-GD installation completed"
 
 dependencies:  $(PREFIX)/lib/luarocks/rocks/luagd/.installed $(PREFIX)/lib/lua/5.1/libalewrap.so $(PREFIX)/lib/libxitari.so
