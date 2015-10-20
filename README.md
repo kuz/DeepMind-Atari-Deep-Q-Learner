@@ -5,6 +5,29 @@ Tested on Ubuntu 14.04 with nVidia GTX 970:
 ![alt text](https://raw.githubusercontent.com/kuz/DeepMind-Atari-Deep-Q-Learner/master/gifs/breakout.gif "Playing Breakout")  
 More videos on [YouTube Playlist: Deepmind DQN Playing](https://www.youtube.com/playlist?list=PLgOp827qARy0qNyZq5Y6S6vRJO3tb1WcW)
 
+Dependencies
+------------
+These package names are valid for Ubuntu 14.04.
+You should install them before running the `install_dependencies.sh` script.
+* build-essential
+* gcc
+* g++
+* cmake
+* curl
+* libreadline-dev
+* git-core
+* libjpeg-dev
+* libpng-dev
+* ncurses-dev
+* imagemagick
+* unzip
+* libqt4-dev
+* liblua5.1-0-dev
+* libgd-dev
+
+
+
+
 DQN 3.0
 -------
 
