@@ -34,14 +34,14 @@ $(PREFIX)/bin/luarocks: $(PREFIX)/.aptdependencies
 		mkdir -p /tmp/luajit-rocks/build/ &&\
 		cd /tmp/luajit-rocks/build/ &&\
 		rm -f CMakeCache.txt &&\
-		cmake .. -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_BUILD_TYPE=Release &&\
+		cmake .. -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_BUILD_TYPE=Debug &&\
 		make && make install
 
 $(PREFIX)/lib/luarocks/rocks/%/.installed: $(PREFIX)/bin/luarocks
 	$< install $*
 	touch $@
 
-LUAROCKS_TO_INSTALL:=cwrap paths torch nn luafilesystem penlight sys xlua image env qtlua qttorch nngraph
+LUAROCKS_TO_INSTALL:=cwrap paths torch nn luafilesystem penlight sys xlua image env qtlua qttorch nngraph mobdebug
 
 isnvcc=$(shell which nvcc)
 ifneq ($(strip $(isnvcc)),)
@@ -59,7 +59,7 @@ $(PREFIX)/lib/libxitari.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
 	$(PREFIX)/bin/luarocks make
 	@echo "Xitari installation completed"
 
-$(PREFIX)/lib/lua/5.1/libalewrap.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS)
+$(PREFIX)/lib/lua/5.1/libalewrap.so: $(PREFIX)/bin/luarocks $(LUAROCKS_TARGETS) $(PREFIX)/lib/libxitari.so
 	echo "Installing Alewrap ... " &&\
 	cd /tmp &&\
 	rm -rf alewrap &&\
