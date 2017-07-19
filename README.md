@@ -1,12 +1,16 @@
 # DeepMind Atari Deep Q Learner
 This repository hosts the [original code](https://sites.google.com/a/deepmind.com/dqn/) published along with [the article](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html) in Nature and my experiments (if any) with it.
 
-Tested on Ubuntu 14.04 with nVidia GTX 970:  
-![alt text](https://raw.githubusercontent.com/kuz/DeepMind-Atari-Deep-Q-Learner/master/gifs/breakout.gif "Playing Breakout")  
-More videos on [YouTube Playlist: Deepmind DQN Playing](https://www.youtube.com/playlist?list=PLgOp827qARy0qNyZq5Y6S6vRJO3tb1WcW)
+Disclaimer
+----------
+This implementation is rather old and there are far more efficient algorithms for reinforcement learning available. If you are interested in applying RL to your problem have a look at [Keras-RL](https://github.com/matthiasplappert/keras-rl) or [rllab](https://github.com/openai/rllab) instead.
 
 DQN 3.0
 -------
+
+Tested on Ubuntu 14.04 with nVidia GTX 970:  
+![alt text](https://raw.githubusercontent.com/kuz/DeepMind-Atari-Deep-Q-Learner/master/gifs/breakout.gif "Playing Breakout")  
+More videos on [YouTube Playlist: Deepmind DQN Playing](https://www.youtube.com/playlist?list=PLgOp827qARy0qNyZq5Y6S6vRJO3tb1WcW)
 
 This project contains the source code of DQN 3.0, a Lua-based deep reinforcement
 learning architecture, necessary to reproduce the experiments
