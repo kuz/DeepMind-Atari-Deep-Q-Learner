@@ -3,7 +3,8 @@ This repository hosts the [original code](https://sites.google.com/a/deepmind.co
 
 Disclaimer
 ----------
-This implementation is rather old and there are far more efficient algorithms for reinforcement learning available. If you are interested in applying RL to your problem have a look at [Keras-RL](https://github.com/matthiasplappert/keras-rl) or [rllab](https://github.com/openai/rllab) instead.
+  * This codebase is not written by me (only the "+ my tweaks" part) and I am not employed by DeepMind.
+  * This implementation is rather old and there are far more efficient algorithms for reinforcement learning available. If you are interested in applying RL to your problem have a look at [Keras-RL](https://github.com/matthiasplappert/keras-rl) or [rllab](https://github.com/openai/rllab) instead.
 
 DQN 3.0
 -------
