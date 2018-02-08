@@ -51,7 +51,7 @@ To train DQN on Atari games, the following components must be installed:
 
 To install all of the above in a subdirectory called 'torch', it should be enough to run
 
-    ./install_dependencies.sh
+    make dependencies
 
 from the base directory of the package.
 

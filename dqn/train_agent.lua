@@ -77,9 +77,9 @@ local episode_reward
 
 local screen, reward, terminal = game_env:getState()
 
-print("Iteration ..", step)
 local win = nil
 while step < opt.steps do
+    print("Iteration ..", step)
     step = step + 1
     local action_index = agent:perceive(reward, screen, terminal)
 
@@ -95,7 +95,7 @@ while step < opt.steps do
     end
 
     -- display screen
-    win = image.display({image=screen, win=win})
+    -- win = image.display({image=screen, win=win})
 
     if step % opt.prog_freq == 0 then
         assert(step==agent.numSteps, 'trainer step: ' .. step ..
@@ -124,7 +124,7 @@ while step < opt.steps do
             screen, reward, terminal = game_env:step(game_actions[action_index])
 
             -- display screen
-            win = image.display({image=screen, win=win})
+            -- win = image.display({image=screen, win=win})
 
             if estep%1000 == 0 then collectgarbage() end
 
