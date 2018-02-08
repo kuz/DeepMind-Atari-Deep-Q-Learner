@@ -6,6 +6,29 @@ Disclaimer
   * This codebase is not written by me (only the "+ my tweaks" part) and I am not employed by DeepMind.
   * This implementation is rather old and there are far more efficient algorithms for reinforcement learning available. If you are interested in applying RL to your problem have a look at [Keras-RL](https://github.com/matthiasplappert/keras-rl) or [rllab](https://github.com/openai/rllab) instead.
 
+Dependencies
+------------
+These package names are valid for Ubuntu 14.04.
+You should install them before running the `install_dependencies.sh` script.
+* build-essential
+* gcc
+* g++
+* cmake
+* curl
+* libreadline-dev
+* git-core
+* libjpeg-dev
+* libpng-dev
+* ncurses-dev
+* imagemagick
+* unzip
+* libqt4-dev
+* liblua5.1-0-dev
+* libgd-dev
+
+
+
+
 DQN 3.0
 -------
 
